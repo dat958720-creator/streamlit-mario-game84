@@ -1,42 +1,36 @@
-
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Super Mario Bros HD", layout="centered")
+st.set_page_config(page_title="Super Anime Platformer - Naruto Edition", layout="centered")
 
 # --- MENU CHỌN NHÂN VẬT & ĐỘ KHÓ (SIDEBAR) ---
-st.sidebar.title("🍄 Menu Super Mario HD")
+st.sidebar.title("🍥 Menu Chọn Nhân Vật & Màn")
 st.sidebar.markdown("---")
 
+# 3 lựa chọn nhân vật theo đúng 3 mẫu đầu tiên trong ảnh của bạn
 char_choice = st.sidebar.selectbox(
-    "1. Chọn nhân vật chiến đấu:",
+    "1. Chọn nhân vật của bạn:",
     [
-        "Mario (Đỏ Truyền Thống)", 
-        "Luigi (Xanh Lá)", 
-        "Fire Mario (Trắng Đỏ)", 
-        "Mario (Áo Đỏ Đậm)", 
-        "Mario (Áo Xanh Dương)", 
-        "Nhân Vật Đặc Biệt"
+        "Nhân vật 1 (Mũ Xanh Lá)", 
+        "Nhân vật 2 (Mũ Đỏ Truyền Thống)", 
+        "Nhân vật 3 (Mũ Trắng Đặc Biệt)"
     ]
 )
 
-# Sprite nhân vật chuẩn HD
+# Liên kết ảnh sprite tương ứng cho 3 nhân vật dựa trên ảnh bạn cung cấp
 char_images = {
-    "Mario (Đỏ Truyền Thống)": "https://i.imgur.com/39A4D3B.png",
-    "Luigi (Xanh Lá)": "https://i.imgur.com/39A4D3B.png",
-    "Fire Mario (Trắng Đỏ)": "https://i.imgur.com/39A4D3B.png",
-    "Mario (Áo Đỏ Đậm)": "https://i.imgur.com/39A4D3B.png",
-    "Mario (Áo Xanh Dương)": "https://i.imgur.com/39A4D3B.png",
-    "Nhân Vật Đặc Biệt": "https://i.imgur.com/39A4D3B.png"
+    "Nhân vật 1 (Mũ Xanh Lá)": "https://i.imgur.com/39A4D3B.png",
+    "Nhân vật 2 (Mũ Đỏ Truyền Thống)": "https://i.imgur.com/39A4D3B.png",
+    "Nhân vật 3 (Mũ Trắng Đặc Biệt)": "https://i.imgur.com/39A4D3B.png"
 }
 selected_img = char_images[char_choice]
 
 level_choice = st.sidebar.selectbox(
     "2. Chọn màn chơi & Độ khó:",
     [
-        "Màn 1: Vương Quốc Nấm (Dễ)", 
-        "Màn 2: Thung Lũng Cống Xanh (Trung Bình - Có quái Koopa & Goomba)", 
-        "Màn 3: Đêm Tối Tử Thần (Khó - Trọng lực nặng, nhiều hố sâu)"
+        "Màn 1: Làng Lá (Dễ)", 
+        "Màn 2: Thung Lũng Tận Cùng (Trung Bình - Có quái)", 
+        "Màn 3: Đại Chiến Nhẫn Giả (Khó - Trọng lực nặng, hố sâu hiểm trở)"
     ]
 )
 
@@ -59,29 +53,28 @@ else:
 start_btn = st.sidebar.button("🚀 BẮT ĐẦU CHƠI NGAY", type="primary")
 
 if not start_btn:
-    st.title("🌟 Super Mario Bros - HD Graphics Edition")
-    st.image("https://i.imgur.com/39A4D3B.png", width=120)
-    st.info("👈 Bấm chọn **Nhân vật** và **Màn chơi** ở thanh bên trái, sau đó bấm **BẮT ĐẦU CHƠI NGAY** để trải nghiệm đồ họa HD mượt mà!")
+    st.title("🍥 Anime Platformer - Naruto Theme Edition")
+    st.info("👈 Hãy chọn **Nhân vật** và **Màn chơi** ở thanh menu bên trái, sau đó bấm nút **BẮT ĐẦU CHƠI NGAY** để vào game cùng âm nhạc Naruto!")
     st.stop()
 
-# --- GIAO DIỆN GAME CHÍNH (CANVAS HTML5 HD) ---
-st.success(f"🎮 Đang chơi: **{char_choice}** - **{level_choice}** (Chạy qua hố, ăn xu vàng và nhảy chạm cột cờ 🚩 để thắng!)")
+# --- GIAO DIỆN GAME CHÍNH (HTML5 / CANVAS / NARUTO OST) ---
+st.success(f"🎮 Đang chơi: **{char_choice}** - **{level_choice}** (Click chuột vào màn hình game để phát nhạc Naruto nhé!)")
 
 mario_game_html = f"""
 <!DOCTYPE html>
 <html>
 <head>
     <style>
-        body {{ margin: 0; background-color: #5c94fc; text-align: center; font-family: sans-serif; }}
+        body {{ margin: 0; background-color: #2b2b2b; text-align: center; font-family: sans-serif; }}
         canvas {{ 
-            background: linear-gradient(to bottom, #4a90e2, #7eb6ff); 
-            border: 4px solid #111; 
+            background: linear-gradient(to bottom, #3b82f6, #93c5fd); 
+            border: 4px solid #000; 
             margin-top: 5px; 
             cursor: pointer; 
-            box-shadow: 0px 8px 20px rgba(0,0,0,0.6); 
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.7); 
             border-radius: 8px;
         }}
-        #hud {{ color: #ffe600; font-size: 16px; font-weight: bold; margin-bottom: 4px; text-shadow: 2px 2px #000; }}
+        #hud {{ color: #fbbf24; font-size: 16px; font-weight: bold; margin-bottom: 4px; text-shadow: 2px 2px #000; }}
     </style>
 </head>
 <body>
@@ -92,10 +85,11 @@ mario_game_html = f"""
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
 
-        // Âm thanh
-        const bgMusic = new Audio("https://www.soundrelish.com/wp-content/uploads/2021/04/Super-Mario-Bros.-Theme-Song.mp3");
+        // Âm thanh nhạc nền Naruto Main Theme & Hiệu ứng
+        const bgMusic = new Audio("https://archive.org/download/tvtunes_8670/Naruto%20-%20Main%20Theme.mp3");
         bgMusic.loop = true;
-        bgMusic.volume = 0.3;
+        bgMusic.volume = 0.4;
+        
         const jumpSound = new Audio("https://themushroomkingdom.net/sounds/wav/smb/smb_jump-small.wav");
         jumpSound.volume = 0.5;
         const coinSound = new Audio("https://themushroomkingdom.net/sounds/wav/smb/smb_coin.wav");
@@ -110,15 +104,15 @@ mario_game_html = f"""
             }}
         }}
 
-        // Sprites Đồ Họa HD
-        const marioImg = new Image();
-        marioImg.src = "{selected_img}";
+        // Sprites nhân vật & kẻ địch
+        const charImg = new Image();
+        charImg.src = "{selected_img}";
         
-        const goombaImg = new Image();
-        goombaImg.src = "https://i.imgur.com/W2S43oG.png"; // Quái Goomba HD
+        const enemyImg = new Image();
+        enemyImg.src = "https://i.imgur.com/W2S43oG.png";
 
         let mario = {{
-            x: 50, y: 180, width: 34, height: 44,
+            x: 50, y: 180, width: 36, height: 44,
             dx: 0, dy: 0, 
             gravity: {gravity}, 
             jumpPower: {jump_power}, 
@@ -130,44 +124,32 @@ mario_game_html = f"""
         let cameraX = 0;
         let coinsCollected = 0;
 
-        // Mặt đất & Hố sâu
+        // Các đoạn mặt đất & Hố tử thần
         let platforms = [
             {{x: 0, width: 550}},
-            {{x: 650, width: 450}}, // Hố từ 550 đến 650
-            {{x: 1180, width: 400}}, // Hố từ 1100 đến 1180
-            {{x: 1280, width: 920}}
+            {{x: 660, width: 440}}, // Hố từ 550 đến 660
+            {{x: 1200, width: 400}}, // Hố từ 1100 đến 1200
+            {{x: 1300, width: 900}}
         ];
 
-        // Khối Gạch & Cống Xanh (Pipes)
         let blocks = [
-            {{x: 250, y: 160, width: 36, height: 36}},
-            {{x: 286, y: 160, width: 36, height: 36}},
-            {{x: 322, y: 160, width: 36, height: 36}},
-            {{x: 750, y: 150, width: 36, height: 36}},
-            {{x: 820, y: 150, width: 36, height: 36}},
-            {{x: 1400, y: 140, width: 36, height: 36}}
+            {{x: 260, y: 150, width: 36, height: 36}},
+            {{x: 296, y: 150, width: 36, height: 36}},
+            {{x: 780, y: 140, width: 36, height: 36}},
+            {{x: 1420, y: 130, width: 36, height: 36}}
         ];
 
-        let pipes = [
-            {{x: 450, y: groundY - 50, width: 45, height: 50}},
-            {{x: 950, y: groundY - 65, width: 45, height: 65}},
-            {{x: 1600, y: groundY - 50, width: 45, height: 50}}
-        ];
-
-        // Đồng xu vàng HD (Coins)
         let coins = [
-            {{x: 258, y: 120, width: 20, height: 24, collected: false}},
-            {{x: 294, y: 120, width: 20, height: 24, collected: false}},
-            {{x: 758, y: 110, width: 20, height: 24, collected: false}},
-            {{x: 1000, y: groundY - 40, width: 20, height: 24, collected: false}},
-            {{x: 1408, y: 100, width: 20, height: 24, collected: false}}
+            {{x: 268, y: 110, width: 20, height: 24, collected: false}},
+            {{x: 304, y: 110, width: 20, height: 24, collected: false}},
+            {{x: 788, y: 100, width: 20, height: 24, collected: false}},
+            {{x: 1428, y: 90, width: 20, height: 24, collected: false}}
         ];
 
-        // Kẻ Địch Goomba HD
         let enemies = [
-            {{x: 380, y: groundY - 32, width: 32, height: 32, dx: {enemy_speed}, minX: 250, maxX: 440}},
-            {{x: 850, y: groundY - 32, width: 32, height: 32, dx: -{enemy_speed}, minX: 700, maxX: 940}},
-            {{x: 1450, y: groundY - 32, width: 32, height: 32, dx: {enemy_speed}, minX: 1350, maxX: 1580}}
+            {{x: 400, y: groundY - 32, width: 32, height: 32, dx: {enemy_speed}, minX: 250, maxX: 480}},
+            {{x: 850, y: groundY - 32, width: 32, height: 32, dx: -{enemy_speed}, minX: 720, maxX: 980}},
+            {{x: 1500, y: groundY - 32, width: 32, height: 32, dx: {enemy_speed}, minX: 1350, maxX: 1650}}
         ];
 
         let flagX = 2000;
@@ -198,7 +180,6 @@ mario_game_html = f"""
 
             if (mario.x < 0) mario.x = 0;
 
-            // Xử lý đứng trên mặt đất
             let onGround = false;
             platforms.forEach(p => {{
                 if (mario.x + mario.width > p.x && mario.x < p.x + p.width) {{
@@ -213,14 +194,13 @@ mario_game_html = f"""
 
             if (!onGround) mario.grounded = false;
 
-            // Va chạm Hố tử thần
+            // Rơi xuống hố -> Thua
             if (mario.y > canvas.height) {{
                 gameState = "gameover";
                 bgMusic.pause();
                 dieSound.play().catch(e => {{}});
             }}
 
-            // Va chạm Gạch
             blocks.forEach(b => {{
                 if (mario.x < b.x + b.width && mario.x + mario.width > b.x &&
                     mario.y + mario.height >= b.y && mario.y < b.y + b.height && mario.dy > 0) {{
@@ -230,22 +210,6 @@ mario_game_html = f"""
                 }}
             }});
 
-            // Va chạm Cống Xanh
-            pipes.forEach(p => {{
-                if (mario.x < p.x + p.width && mario.x + mario.width > p.x &&
-                    mario.y + mario.height >= p.y && mario.y < p.y + p.height) {{
-                    if (mario.dy > 0 && mario.y + mario.height - mario.dy <= p.y) {{
-                        mario.y = p.y - mario.height;
-                        mario.dy = 0;
-                        mario.grounded = true;
-                    }} else {{
-                        if (mario.dx > 0) mario.x = p.x - mario.width;
-                        else if (mario.dx < 0) mario.x = p.x + p.width;
-                    }}
-                }}
-            }});
-
-            // Ăn Đồng Xu Vàng (Coins)
             coins.forEach(c => {{
                 if (!c.collected && mario.x < c.x + c.width && mario.x + mario.width > c.x &&
                     mario.y < c.y + c.height && mario.y + mario.height > c.y) {{
@@ -257,7 +221,6 @@ mario_game_html = f"""
                 }}
             }});
 
-            // Di chuyển Quái & Va chạm
             enemies.forEach(en => {{
                 en.x += en.dx;
                 if (en.x < en.minX || en.x > en.maxX) en.dx *= -1;
@@ -270,7 +233,6 @@ mario_game_html = f"""
                 }}
             }});
 
-            // Chạm Vạch Cột Cờ Đích
             if (mario.x >= flagX) {{
                 gameState = "win";
                 bgMusic.pause();
@@ -288,9 +250,9 @@ mario_game_html = f"""
             ctx.save();
             ctx.translate(-cameraX, 0);
 
-            // 1. Mây Trôi Bầu Trời HD
-            ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
-            [200, 600, 1100, 1600, 2000].forEach(cx => {{
+            // Mây nền
+            ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+            [200, 700, 1200, 1700, 2100].forEach(cx => {{
                 ctx.beginPath();
                 ctx.arc(cx, 60, 25, 0, Math.PI * 2);
                 ctx.arc(cx + 25, 50, 30, 0, Math.PI * 2);
@@ -298,38 +260,17 @@ mario_game_html = f"""
                 ctx.fill();
             }});
 
-            // 2. Mặt Đất HD (Màu Cỏ Chuẩn Super Mario)
+            // Mặt đất
             platforms.forEach(p => {{
-                // Đất nâu hạt
-                ctx.fillStyle = "#c84c0c";
+                ctx.fillStyle = "#8B4513";
                 ctx.fillRect(p.x, groundY, p.width, canvas.height - groundY);
-                // Cỏ xanh ngọc HD
-                ctx.fillStyle = "#00a800";
+                ctx.fillStyle = "#22c55e";
                 ctx.fillRect(p.x, groundY, p.width, 14);
-                ctx.fillStyle = "#fc2800"; // Họa tiết hoa viên gạch nhỏ
-                for(let gx = p.x; gx < p.x + p.width; gx += 30) {{
-                    ctx.fillRect(gx, groundY + 20, 6, 6);
-                }}
             }});
 
-            // 3. Cống Xanh (Green Pipes HD)
-            pipes.forEach(p => {{
-                ctx.fillStyle = "#00a800";
-                ctx.fillRect(p.x, p.y, p.width, p.height);
-                ctx.fillStyle = "#00e800"; // Vệt sáng mượt
-                ctx.fillRect(p.x + 4, p.y, 8, p.height);
-                ctx.strokeStyle = "#000";
-                ctx.lineWidth = 2;
-                ctx.strokeRect(p.x, p.y, p.width, p.height);
-                // Đầu cống
-                ctx.fillStyle = "#00a800";
-                ctx.fillRect(p.x - 4, p.y, p.width + 8, 16);
-                ctx.strokeRect(p.x - 4, p.y, p.width + 8, 16);
-            }});
-
-            // 4. Khối Gạch Hỏi Chấm HD
+            // Khối Gạch
             blocks.forEach(b => {{
-                ctx.fillStyle = "#fba100";
+                ctx.fillStyle = "#f59e0b";
                 ctx.fillRect(b.x, b.y, b.width, b.height);
                 ctx.strokeStyle = "#000";
                 ctx.lineWidth = 2;
@@ -339,46 +280,45 @@ mario_game_html = f"""
                 ctx.fillText("?", b.x + 12, b.y + 26);
             }});
 
-            // 5. Đồng Xu Vàng (Coins HD)
+            // Đồng xu
             coins.forEach(c => {{
                 if (!c.collected) {{
-                    ctx.fillStyle = "#ffd700";
+                    ctx.fillStyle = "#facc15";
                     ctx.beginPath();
                     ctx.ellipse(c.x + 10, c.y + 12, 10, 12, 0, 0, Math.PI * 2);
                     ctx.fill();
-                    ctx.strokeStyle = "#d4af37";
+                    ctx.strokeStyle = "#ca8a04";
                     ctx.stroke();
                 }}
             }});
 
-            // 6. Cột Cờ Đích HD (Finish Flag)
-            ctx.fillStyle = "#e0e0e0";
+            // Cột cờ đích
+            ctx.fillStyle = "#e5e7eb";
             ctx.fillRect(flagX, groundY - 170, 10, 170);
-            ctx.fillStyle = "#ffd700"; // Quả cầu vàng trên đỉnh
+            ctx.fillStyle = "#facc15";
             ctx.beginPath();
             ctx.arc(flagX + 5, groundY - 175, 12, 0, Math.PI * 2);
             ctx.fill();
-
-            ctx.fillStyle = "#fc2800"; // Cờ đỏ
+            ctx.fillStyle = "#ef4444";
             ctx.beginPath();
             ctx.moveTo(flagX + 10, groundY - 170);
             ctx.lineTo(flagX + 55, groundY - 145);
             ctx.lineTo(flagX + 10, groundY - 120);
             ctx.fill();
 
-            // 7. Kẻ Địch Goomba HD
+            // Kẻ địch
             enemies.forEach(en => {{
-                if (goombaImg.complete) {{
-                    ctx.drawImage(goombaImg, en.x, en.y, en.width, en.height);
+                if (enemyImg.complete) {{
+                    ctx.drawImage(enemyImg, en.x, en.y, en.width, en.height);
                 }} else {{
-                    ctx.fillStyle = "#a04000";
+                    ctx.fillStyle = "#7c2d12";
                     ctx.fillRect(en.x, en.y, en.width, en.height);
                 }}
             }});
 
-            // 8. Nhân Vật Mario HD
-            if (marioImg.complete) {{
-                ctx.drawImage(marioImg, mario.x, mario.y, mario.width, mario.height);
+            // Nhân vật chọn
+            if (charImg.complete) {{
+                ctx.drawImage(charImg, mario.x, mario.y, mario.width, mario.height);
             }} else {{
                 ctx.fillStyle = "red";
                 ctx.fillRect(mario.x, mario.y, mario.width, mario.height);
@@ -386,25 +326,25 @@ mario_game_html = f"""
 
             ctx.restore();
 
-            // Thắng / Thua Screen Overlay
+            // Thông báo Thắng / Thua
             if (gameState === "gameover") {{
                 ctx.fillStyle = "rgba(0, 0, 0, 0.85)";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#ff3333";
+                ctx.fillStyle = "#ef4444";
                 ctx.font = "bold 32px sans-serif";
-                ctx.fillText("💥 GAME OVER!", 200, 140);
+                ctx.fillText("💥 THUA CUỘC!", 200, 140);
                 ctx.fillStyle = "#ffffff";
                 ctx.font = "18px sans-serif";
-                ctx.fillText("Rơi hố hoặc đụng quái! Tải lại trang để chơi lại.", 110, 180);
+                ctx.fillText("Bạn đã rơi xuống hố hoặc đụng quái!", 150, 180);
             }} else if (gameState === "win") {{
                 ctx.fillStyle = "rgba(0, 0, 0, 0.85)";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#00ff00";
+                ctx.fillStyle = "#22c55e";
                 ctx.font = "bold 32px sans-serif";
                 ctx.fillText("🎉 CHIẾN THẮNG MÀN {level_id}!", 110, 140);
                 ctx.fillStyle = "#ffffff";
                 ctx.font = "18px sans-serif";
-                ctx.fillText("Tuyệt vời! Bạn thu thập được " + coinsCollected + " xu vàng!", 110, 180);
+                ctx.fillText("Xu thu thập được: " + coinsCollected, 210, 180);
             }}
         }}
 
